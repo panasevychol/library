@@ -12,9 +12,9 @@
 {% for title in titles %}
 <table style='margin-top: 10px; padding-left: 10px; padding-right: 10px; background-color: #EEE685; width: 100%'>
     <tr><td>
-    <b> |
+    <b> 
         {% for composer in title.composers %}
-        {{composer.book_writer}} |
+        {{composer.book_writer}} 
         {% endfor %}
     </b>
     : "{{title.book_title}}" 
