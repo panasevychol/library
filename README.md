@@ -24,3 +24,4 @@ Key features:
 Script add_test_data.py adds a user and a few books posted by that user to fill the application with some data.
 Also repository contains database created with script db_create.py. I signed in once to post a few books to make Library not empty at all.
 Repository does not contain installed Flask environment and required expansions.
+run.py runs the application.
