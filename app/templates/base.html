@@ -1,0 +1,56 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{title}} - library</title>
+    {% else %}
+    <title>library</title>
+    {% endif %}
+  </head>
+  <body >
+    <table style='border-width: 1px; bordercolor: lightgrey; border-style: solid; width: 650px;' align = center>
+    <tr ><td>
+    <div style='margin: 30px'>
+    <table width=100%>
+        <tr>
+            <td>
+            <font size=14 color=#36648B>Library</font>
+            </td>
+            <td align=right valign=bottom>
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if g.user.is_authenticated() %}
+            | <a href="{{ url_for('user', nickname = g.user.nickname) }}">Your Profile</a>
+            | <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+            | <a href="{{ url_for('login') }}">Sign In</a>
+            {% endif %}
+            
+            </td>
+        </tr>
+    </table>
+    <hr>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <br><li>{{ message }} </li>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    </div>
+    <br>
+    <center>
+        <span><a href="" onclick="
+            obj=this.parentNode.childNodes[1].style; 
+            tmp=(obj.display!='block') ? 'block' : 'none'; 
+            obj.display=tmp; 
+            return false;"
+            style='text-decoration: none; color: grey; '><i>&copy</i></a><div style='display: none'>
+            <font color=grey><i>Developed by Oleg Panasevych</i></font></div>
+        </span>
+    </center>
+    <br>
+    </td></tr>
+    </table>
+  </body>
+</html>

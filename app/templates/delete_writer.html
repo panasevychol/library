@@ -1,0 +1,13 @@
+<!-- extend index layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Delete writer:</h2>
+<form action="" method="post" name="delete_writer">
+    {{form.hidden_tag()}}Book writer: {{ form.book_writer(size = 30, maxlength = 140, readonly = True) }}
+    {% for error in form.errors.delete_writer %}
+    <span style="color: crimson;">{{error}}</span><br>
+    {% endfor %} &nbsp<input type="submit" value="Delete"> <button><a href="{{ url_for('manage_writers') }}" style='text-decoration: none; color: black; '> Cancel </a></button>
+</form>
+<br>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- extend index layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit writer:</h2>
+<form action="" method="post" name="edit_writer">
+    {{form.hidden_tag()}}Book writer: {{ form.book_writer(size = 30, maxlength = 140) }}
+    {% for error in form.errors.edit_writer %}
+    <span style="color: crimson;">{{error}}</span><br>
+    {% endfor %} &nbsp<input type="submit" value="Edit"> <button><a href="{{ url_for('manage_writers') }}" style='text-decoration: none; color: black; '> Cancel </a></button>
+</form>
+<br>
+{% endblock %}

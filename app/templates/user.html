@@ -1,0 +1,28 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+            <h2>User: {{user.nickname}}</h2>
+            {% if user.about_me %}<p>{{user.about_me}}</p>{% endif %}
+            {% if user.last_seen %}<p><i>Last seen on: {{user.last_seen}}</i></p>{% endif %}
+            {% if user.id == g.user.id %}<p><a href="{{url_for('edit')}}">Edit profile</a></p>{% endif %}
+
+<hr>
+<center><i>~ Books added by {{user.nickname}} ~</i></center>
+{% for title in titles %}
+<table style='margin-top: 10px; padding-left: 10px; padding-right: 10px; background-color: #EEE685; width: 100%'>
+    <tr><td>
+    <b> |
+        {% for composer in title.composers %}
+        {{composer.book_writer}} |
+        {% endfor %}
+    </b>
+    : "{{title.book_title}}" 
+    </td><td align=right>
+    {% if user.id == g.user.id and g.user.is_authenticated() %}
+    <i><a href="{{url_for('edit_book', book_id = title.id)}}"  style='color: grey; '>Edit</a> | <a href="{{url_for('delete_book', book_id = title.id)}}"  style='color: grey; '>Delete</a></i>
+    {% endif %}
+    </td></tr>
+</table>
+{% endfor %}
+{% endblock %}

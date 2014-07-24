@@ -1,0 +1,39 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div style='padding-top: 1; padding-bottom: 5; padding-left: 25px; background-color: #E5F1FF; '>
+<script type="text/javascript">
+function set_openid(openid, pr)
+{
+    u = openid.search('<username>');
+    if (u != -1) {
+        // openid requires username
+        user = prompt('Enter your ' + pr + ' username:');
+        openid = openid.substr(0, u) + user;
+    }
+    form = document.forms['login'];
+    form.elements['openid'].value = openid;
+}
+</script>
+<h2>Sign In</h2>
+<form action="" method="post" name="login">
+    {{form.hidden_tag()}}
+    <p>
+        Please enter your OpenID, or select one of the providers below:<br>
+        {{form.openid(size=58)}}
+        {% for error in form.errors.openid %}
+        <span style="color: crimson;">{{error}}</span>
+        {% endfor %}
+        <p>
+            {% for pr in providers %}
+            <a href="javascript:set_openid('{{pr.url}}', '{{pr.name}}');" style='text-decoration: none; border: 1px dashed grey; '>&nbsp{{pr.name}}&nbsp</a>&nbsp
+            {% endfor %}
+        </p>
+    </p>
+    <p><input type="submit" value="Sign In"> &nbsp  {{form.remember_me}} Remember Me</p>
+    <p></p>
+</form>
+</div>
+{% endblock %}
+

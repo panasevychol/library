@@ -1,0 +1,41 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+{% if search_by == 'title' %}
+<h2>Search results for "{{query}}" in titles:</h2>
+{% for title in results %}
+    <table style='margin-top: 10px; padding-left: 10px; padding-right: 10px; background-color: #EEE685; width: 100%'>
+		<tr><td>
+			<b>
+				{% for composer in title.composers %}
+				{{composer.book_writer}} 
+				{% endfor %}
+			</b>
+			: "{{title.book_title}}"
+		</td>
+		</td><td align=right>
+			<i><a href="{{url_for('edit_book', book_id = title.id)}}"  style='color: grey; '>Edit</a> | <a href="{{url_for('delete_book', book_id = title.id)}}"  style='color: grey; '>Delete</a></i>
+		</td></tr>
+	</table>
+{% endfor %}
+{% else %}
+<h2>Search results for "{{query}}" in writers:</h2>
+{% for writer in results %}
+{% for composed in writer.compositions %}
+	<table style='margin-top: 10px; padding-left: 10px; padding-right: 10px; background-color: #EEE685; width: 100%'>
+		<tr><td>
+				
+				<b>{{writer.book_writer}}</b> :
+					"{{composed.book_title}}"
+				
+			
+		</td>
+		</td><td align=right>
+			<i><a href="{{url_for('edit_book', book_id = composed.id)}}"  style='color: grey; '>Edit</a> | <a href="{{url_for('delete_book', book_id = composed.id)}}"  style='color: grey; '>Delete</a></i>
+		</td></tr>
+	</table>
+	{% endfor %}
+{% endfor %}
+{% endif %}
+{% endblock %}
