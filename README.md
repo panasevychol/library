@@ -1,4 +1,4 @@
-library
+Library
 =======
 
 <h3>Library application on Flask</h3>
