@@ -43,5 +43,6 @@ Required installations to run app from computer (on Windows):
     flask\Scripts\pip install pytz==2013b<br>
     flask\Scripts\pip install flask-babel==0.8<br>
     flask\Scripts\pip install flup</i>
+
   - create Virtual environment: install virtualenv ('pip install virtualenv') and execute 'virtualenv flask' to set it up
 
