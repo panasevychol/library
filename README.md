@@ -31,7 +31,7 @@ http://library-panasevychol.herokuapp.com/
 <br><br>
 Required installations to run app from computer (on Windows):
   - install <a href='www.python.org/download/'>Python 2.7</a>
-  - execute following list of commands to install all required packages:<br><br><i>
+  - execute following command to install all required packages:<br><br><i>
     pip install flask flask-login flask-openid sqlalchemy flask-sqlalchemy sqlalchemy-migrate flask-whooshalchemy flask-wtf pytz flask-babel flup<br></i>
 
   - create Virtual environment: install virtualenv ('pip install virtualenv') and execute 'virtualenv flask' to set it up
